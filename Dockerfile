@@ -7,6 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
   apt-get install --yes --no-install-recommends \
   texlive \
+  texlive-latex-extra \
   pandoc && \
   apt-get autoclean && \
   apt-get --purge --yes autoremove && \
