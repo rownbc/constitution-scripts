@@ -1,0 +1,62 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[letterpaper, margin=0.75in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{titlesec}
+
+%\usepackage{enumerate}
+%\usepackage[shortlabels]{enumitem}
+
+$if(listings)$
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+$endif$
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={NARRAGANSETT BOAT CLUB CONSTITUTION AND BYLAWS},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+%\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+%\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+%\ifx\paragraph\undefined\else
+%\let\oldparagraph\paragraph
+%\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+%\fi
+%\ifx\subparagraph\undefined\else
+%\let\oldsubparagraph\subparagraph
+%\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+%\fi
+
+% No Page Numbers
+\pagenumbering{gobble}
+
+% format section use uppercase roman numerals
+\titleformat{\section}[block]
+{\filcenter\bf}{ARTICLE {\Roman{section}}}{1em}{\MakeUppercase}
+
+% format subsection use arabic numerals breadcrumb style
+\titleformat{\subsection}[runin]
+{}{\arabic{section}.\arabic{subsection}}{1em}{}
+
+% Suppress author
+\author{}
+
+\title{$title$}
+\date{$date$}
+
+\begin{document}
+\maketitle
+
+$body$
+
+\end{document}
