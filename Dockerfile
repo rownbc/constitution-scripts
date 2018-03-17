@@ -4,8 +4,7 @@ FROM haskell
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install all TeX and LaTeX dependences
-RUN apt-get update && \
-  apt-get install --yes --no-install-recommends \
+RUN apt-get update && apt-get install --yes --no-install-recommends \
   make \
   git \
   ca-certificates \
@@ -27,11 +26,9 @@ RUN apt-get update && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Pandoc
-RUN cabal update && cabal install \
+RUN stack install \
   pandoc \
-  pandoc-citeproc \
-  pandoc-citeproc-preamble \
-  pandoc-crossref
+  pandoc-citeproc
 
 # Set the locale
 RUN dpkg-reconfigure locales
