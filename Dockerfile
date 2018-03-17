@@ -8,8 +8,9 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
   ca-certificates \
   texlive-base \
   texlive-latex-base \
-  texlive-fonts-recommended \
-  apt-get autoclean && apt-get --purge --yes autoremove && \
+  texlive-fonts-recommended && \
+  apt-get autoclean && \
+  apt-get --purge --yes autoremove && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Pandoc
