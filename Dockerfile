@@ -4,8 +4,15 @@ FROM haskell
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install all TeX and LaTeX dependences
+RUN apt-get update && \
+  apt-get upgrade --yes && \
+  apt-get install --yes --no-install-recommends \
+  apt-utils
+
 RUN apt-get update && apt-get install --yes --no-install-recommends \
-  ca-certificates \
+  git \
+  make \
+  xz-utils \
   texlive-base \
   texlive-latex-base \
   texlive-fonts-recommended && \
@@ -14,14 +21,8 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Pandoc
-RUN stack upgrade && stack install \
+RUN stack upgrade && /root/.local/bin/stack install \
   pandoc
-
-# Set the locale
-RUN dpkg-reconfigure locales
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
 
 # Export the output data
 WORKDIR /data
